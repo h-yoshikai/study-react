@@ -12,7 +12,7 @@ export default function Home() {
     () => {
       // 関数にすると、呼ばれるタイミングで前回の状態を正しく反映することができる
       if (count < 10) {
-        setCount((count) => count + 1);
+        setCount((prevCount) => prevCount + 1);
       }
       // setFoo(foo + 1);
       // setFoo(foo + 1);
@@ -35,7 +35,7 @@ export default function Home() {
   }, []);
 
   const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
   useEffect(() => {
