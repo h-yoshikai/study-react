@@ -7,6 +7,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(
     () => {
@@ -38,6 +39,17 @@ export default function Home() {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
+  const handleAdd = useCallback(() => {
+    // setText("");
+    setArray((prevArray) => {
+      if (prevArray.some((item) => item === text)) {
+        alert("same");
+        return prevArray;
+      }
+      return [...prevArray, text];
+    });
+  }, [text]); //テキストが変わった時に関数を再生成しないとtextが空
+
   useEffect(() => {
     // マウント時
     document.body.style.backgroundColor = "lightblue";
@@ -58,6 +70,12 @@ export default function Home() {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
       <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>;
+        })}
+      </ul>
       <Main page="index" />
 
       <Footer />
