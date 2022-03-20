@@ -5,6 +5,8 @@ import styles from "src/styles/Home.module.css";
 
 export default function Home() {
   const [count, setCount] = useState(1);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
 
   const handleClick = useCallback(
     () => {
@@ -24,6 +26,18 @@ export default function Home() {
   // 空配列だと関数が再生成されないので、関数内の変数がずっと同じ
   // 関数で書くと正しく前回の値が使用される
 
+  const handleChange = useCallback((e) => {
+    if (e.target.value.length > 5) {
+      alert("5文字以内にしてください");
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow((isShow) => !isShow);
+  }, []);
+
   useEffect(() => {
     // マウント時
     document.body.style.backgroundColor = "lightblue";
@@ -40,8 +54,10 @@ export default function Home() {
         <title>Index Page</title>
       </Head>
       <Header />
-      <h1>{count}</h1>
+      {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
+      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <input type="text" value={text} onChange={handleChange} />
       <Main page="index" />
 
       <Footer />
