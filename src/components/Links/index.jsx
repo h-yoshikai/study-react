@@ -1,6 +1,6 @@
 import classes from "src/components/Links/Links.module.css";
 
-export const Links = ({ props }) => {
+export const Links = (props) => {
   return (
     <div className={classes.grid}>
       {props.items.map((item) => {
