@@ -1,8 +1,13 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useMemo } from "react";
 
 export const useCounter = () => {
   const [count, setCount] = useState(1);
   const [isShow, setIsShow] = useState(true);
+
+  const doubleCount = useMemo(() => {
+    return count * 2;
+  }, [count]);
+
   const handleClick = useCallback(
     () => {
       // 関数にすると、呼ばれるタイミングで前回の状態を正しく反映することができる
@@ -25,5 +30,5 @@ export const useCounter = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
-  return { count, isShow, handleClick, handleDisplay };
+  return { count, doubleCount, isShow, handleClick, handleDisplay };
 };
