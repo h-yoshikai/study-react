@@ -1,10 +1,9 @@
 import Head from "next/head";
 import { Footer, Header, Main } from "src/components";
-import styles from "src/styles/Home.module.css";
 
 const About = (props) => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>About Page</title>
       </Head>
