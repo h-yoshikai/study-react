@@ -1,19 +1,18 @@
 import Head from "next/head";
-import { useEffect, useState, useCallback } from "react";
-import { Footer, Header, Main } from "src/components";
-import { Posts } from "src/components/Posts";
+import { Header } from "src/components";
+import { Posts as PostsComponent } from "src/components/Posts";
 import styles from "src/styles/Home.module.css";
 
-const APITest = () => {
+const Posts = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Index Page</title>
+        <title>Posts Page</title>
       </Head>
       <Header />
-      <Posts />
+      <PostsComponent />
     </div>
   );
 };
 
-export default APITest;
+export default Posts;
