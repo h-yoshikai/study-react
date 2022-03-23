@@ -17,7 +17,15 @@ export const Comment = () => {
       <Head>
         <title>{data?.name}</title>
       </Head>
-      {data ? <div>{data.body}</div> : null}
+      {data ? (
+        <div>
+          <h1>{data.body}</h1>
+          <ul>
+            <li>{data.name}</li>
+            <li>{data.email}</li>
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };

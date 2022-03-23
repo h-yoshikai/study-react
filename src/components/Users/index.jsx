@@ -22,7 +22,9 @@ export const Users = () => {
         return (
           <li key={user.id}>
             <Link href={`/users/${user.id}`}>
-              <a>{user.name}</a>
+              <a>
+                {user.name} ({user.email})
+              </a>
             </Link>
           </li>
         );
