@@ -1,7 +1,10 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { PostsByUserId } from "src/components/Posts/PostsByUserId";
 import { useUser } from "src/hooks/useUser";
 
 export const User = () => {
+  const router = useRouter();
   const { data, error, isLoading } = useUser();
 
   if (isLoading) {
@@ -20,6 +23,7 @@ export const User = () => {
       {data ? (
         <div>
           <h1>{data.name}</h1>
+          <h2>詳細</h2>
           <ul>
             <li>{data.email}</li>
             <li>{data.username}</li>
@@ -28,6 +32,9 @@ export const User = () => {
             <li>{data.website}</li>
             <li>{data.company.name}</li>
           </ul>
+          <h2>投稿</h2>
+          <PostsByUserId id={router.query.id} />
+          <h2>コメント</h2>
         </div>
       ) : null}
     </div>
