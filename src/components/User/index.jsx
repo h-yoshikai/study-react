@@ -34,7 +34,6 @@ export const User = () => {
           </ul>
           <h2>投稿</h2>
           <PostsByUserId id={router.query.id} />
-          <h2>コメント</h2>
         </div>
       ) : null}
     </div>
