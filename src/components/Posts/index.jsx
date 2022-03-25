@@ -31,7 +31,7 @@ import { usePosts } from "src/hooks/useFetchArray";
 
 export const Posts = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
-  console.log({ data, error });
+  // console.log({ data, error });
   // const [state, dispatch] = useReducer(reducer, initialState);
 
   // const getPosts = useCallback(async () => {

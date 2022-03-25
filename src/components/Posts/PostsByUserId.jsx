@@ -3,7 +3,7 @@ import { usePostsByUserId } from "src/hooks/useFetchArray";
 
 export const PostsByUserId = (props) => {
   const { data, error, isLoading, isEmpty } = usePostsByUserId(props.id);
-  console.log({ data, error });
+  // console.log({ data, error });
   if (isLoading) {
     return <div>Loading...</div>;
   }
