@@ -3,7 +3,9 @@ import { Comment } from "src/components/Comment";
 import { SWRConfig } from "swr";
 
 export const getStaticPaths = async () => {
-  const comments = await fetch("https://jsonplaceholder.typicode.com/comments");
+  const comments = await fetch(
+    "https://jsonplaceholder.typicode.com/comments?_limit=10"
+  );
   const commentsData = await comments.json();
   const paths = commentsData.map((comment) => ({
     params: {
@@ -12,7 +14,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths: paths,
-    fallback: false,
+    fallback: "blocking", //falseだと、11件目以降は404。trueにするとリクエストのタイミングでSG
   };
 };
 
@@ -20,6 +22,14 @@ export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
   const COMMENT_API_URL = `https://jsonplaceholder.typicode.com/comments/${id}`;
   const comment = await fetch(COMMENT_API_URL);
+
+  // 存在しないコメントのURLにいこうとしたとき
+  if (!comment.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const commentData = await comment.json();
 
   return {
@@ -33,6 +43,13 @@ export const getStaticProps = async (ctx) => {
 
 const CommentsId = (props) => {
   const { fallback } = props;
+  // const router = useRouter();
+
+  // // アクセスタイミングでは用意されていないが、その間に表示する
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>;
+  // }
+
   return (
     <div>
       <SWRConfig value={{ fallback }}>

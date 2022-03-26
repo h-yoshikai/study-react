@@ -21,7 +21,8 @@ export const Comments = () => {
       {data.map((comment) => {
         return (
           <li key={comment.id} className="border-b pb-2">
-            <Link href={`/comments/${comment.id}`}>
+            {/* 画面にLink要素が入ったタイミングでプリフェッチしないように(ホバーさせた瞬間にフェッチ) */}
+            <Link href={`/comments/${comment.id}`} prefetch={false}>
               <a className="block text-sm hover:text-blue-500">
                 {comment.body}
               </a>
