@@ -15,6 +15,7 @@ export const getStaticProps = async () => {
         [COMMENTS_API_URL]: commentsData,
       },
     },
+    revalidate: 1, //1秒たった後の初めてのリクエストで新しいページを生成（この時点では古いページを返す）。その後のリクエストでは新しいページを返す。
   };
 };
 

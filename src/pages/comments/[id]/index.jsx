@@ -17,6 +17,7 @@ export const getStaticPaths = async () => {
   };
 };
 
+// 一度しか走らないので、notFound: trueになるとそのままになる
 export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
   const COMMENT_API_URL = `${API_URL}/comments/${id}`;
@@ -26,6 +27,7 @@ export const getStaticProps = async (ctx) => {
   if (!comment.ok) {
     return {
       notFound: true,
+      revalidate: 1,
     };
   }
 
@@ -37,6 +39,7 @@ export const getStaticProps = async (ctx) => {
         [COMMENT_API_URL]: commentData,
       },
     },
+    revalidate: 1,
   };
 };
 
