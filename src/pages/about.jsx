@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Footer, Header, Main } from "src/components";
+import { Footer, Main } from "src/components";
 
 const About = (props) => {
   return (
@@ -7,7 +7,6 @@ const About = (props) => {
       <Head>
         <title>About Page</title>
       </Head>
-      <Header />
       {props.isShow ? <h1>{props.doubleCount}</h1> : null}
       <button onClick={props.handleClick}>ボタン</button>
       <button onClick={props.handleDisplay}>

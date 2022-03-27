@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { usePosts } from "src/hooks/useFetchArray";
+import { useFetchArray } from "src/hooks/useFetchArray";
+import { API_URL } from "src/utils/const";
 
 // const initialState = {
 //   data: [],
@@ -29,8 +30,8 @@ import { usePosts } from "src/hooks/useFetchArray";
 //   }
 // };
 
-export const Posts = () => {
-  const { data, error, isLoading, isEmpty } = usePosts();
+export const PostList = () => {
+  const { data, error, isLoading, isEmpty } = useFetchArray(`${API_URL}/posts`);
   // console.log({ data, error });
   // const [state, dispatch] = useReducer(reducer, initialState);
 

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Layout } from "src/components/Layout";
+import { AppLayout } from "src/layouts/AppLayout";
 import { useCounter } from "src/hooks/useCounter";
 import { useInputArray } from "src/hooks/useInputArray";
 import "src/styles/globals.css";
@@ -17,9 +17,9 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SWRConfig value={{ fetcher: fetcher }}>
-        <Layout>
+        <AppLayout>
           <Component {...pageProps} {...counter} {...inputArray} />
-        </Layout>
+        </AppLayout>
       </SWRConfig>
     </>
   );

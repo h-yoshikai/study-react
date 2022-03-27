@@ -1,7 +1,6 @@
-import { API_URL } from "src/utils/const";
 import useSWRImmutable from "swr/immutable";
 
-const useFetchArray = (url) => {
+export const useFetchArray = (url) => {
   const { data, error } = useSWRImmutable(url);
   return {
     data,
@@ -11,22 +10,22 @@ const useFetchArray = (url) => {
   };
 };
 
-export const usePosts = () => {
-  return useFetchArray(`${API_URL}/posts`);
-};
+// export const usePosts = () => {
+//   return useFetchArray(`${API_URL}/posts`);
+// };
 
-export const usePostsByUserId = (id) => {
-  return useFetchArray(id ? `${API_URL}/posts?userId=${id}` : null);
-};
+// export const usePostsByUserId = (id) => {
+//   return useFetchArray(id ? `${API_URL}/posts?userId=${id}` : null);
+// };
 
-export const useUsers = () => {
-  return useFetchArray(`${API_URL}/users`);
-};
+// export const useUsers = () => {
+//   return useFetchArray(`${API_URL}/users`);
+// };
 
-export const useComments = () => {
-  return useFetchArray(`${API_URL}/comments`);
-};
+// export const useComments = () => {
+//   return useFetchArray(`${API_URL}/comments`);
+// };
 
-export const useCommentByPostsId = (id) => {
-  return useFetchArray(id ? `${API_URL}/comments?postId=${id}` : null);
-};
+// export const useCommentByPostsId = (id) => {
+//   return useFetchArray(id ? `${API_URL}/comments?postId=${id}` : null);
+// };

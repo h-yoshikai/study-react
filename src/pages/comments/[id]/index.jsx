@@ -1,5 +1,4 @@
-import { Header } from "src/components";
-import { Comment } from "src/components/Comment";
+import { CommentDetail } from "src/components/Comment/CommentDetail";
 import { API_URL } from "src/utils/const";
 import { SWRConfig } from "swr";
 
@@ -55,8 +54,7 @@ const CommentsId = (props) => {
   return (
     <div>
       <SWRConfig value={{ fallback }}>
-        <Header />
-        <Comment />
+        <CommentDetail />
       </SWRConfig>
     </div>
   );
